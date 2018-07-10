@@ -11,7 +11,6 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  devtool: '#cheap-module-eval-source-map',
   mode: env,
   plugins: [
     new webpack.DefinePlugin({
@@ -38,5 +37,6 @@ if (isDev) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   )
+  config.devtool = '#cheap-module-eval-source-map'
 }
 module.exports = config
