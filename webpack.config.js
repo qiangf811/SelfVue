@@ -21,18 +21,22 @@ const config = {
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ]
 }
 if (isDev) {
   config.devServer = {
     port: 9000,
-    host: '0.0.0.0',
+    host: 'localhost',
     overlay: {
       errors: true
     },
+    open: true,
     hot: true
   }
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  )
 }
 module.exports = config
